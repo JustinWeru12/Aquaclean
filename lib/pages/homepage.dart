@@ -1,5 +1,9 @@
 import 'dart:math';
 
+import 'package:aquaclean/pages/hire.dart';
+import 'package:aquaclean/pages/joinus.dart';
+import 'package:aquaclean/pages/rate.dart';
+import 'package:aquaclean/pages/request.dart';
 import 'package:aquaclean/pages/sidebar.dart';
 import 'package:aquaclean/services/auth.dart';
 import 'package:aquaclean/services/crud.dart';
@@ -77,33 +81,41 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
-          Positioned.fill(
-            child: Container(
-              color: Colors.grey[200],
-            ),
-          ),
           Image.asset(
             'assets/bg.jpg',
-            height: MediaQuery.of(context).size.height * 0.55,
+            height: MediaQuery.of(context).size.height * 0.5,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
           ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(0.0),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Color(0xFFE9D5CA),
+                    Color(0xFFE9D5CA),
+                  ],
+                ),
+              ),
+            ),
+          ),
           Align(
-              alignment: Alignment(0, 0.80),
-              child: _isPro
-                  ? _buildTiles(
-                      side, mainColor, 'Edit\nProfession.', null)
-                  : _buildTiles(side, mainColor, 'Join Us.', null)),
+              alignment: Alignment(0, 0.60),
+              child: _buildTiles(side, mainColor, 'Join Us.', JoinUs())),
           Align(
-              alignment: Alignment(0.8, 0.45),
-              child: _buildTiles(side, kfirstColor, 'Rate', null)),
+              alignment: Alignment(0.8, 0.25),
+              child: _buildTiles(side, kfirstColor, 'Rate', Rate())),
           Align(
-              alignment: Alignment(-0.8, 0.45),
-              child: _buildTiles(side, ksecondColor, 'Request Service', null)),
+              alignment: Alignment(-0.8, 0.25),
+              child: _buildTiles(side, ksecondColor, 'Request Service', Request())),
           Align(
-              alignment: Alignment(0, 0.10),
-              child: _buildTiles(side, kthirdrcolor, 'Hire', null)),
-          Align(alignment: Alignment(0, -0.88), child: textBox()),
+              alignment: Alignment(0, -0.10),
+              child: _buildTiles(side, kthirdrcolor, 'Hire', Hire())),
+          Align(alignment: Alignment(0, 1), child: textBox()),
           Align(
             alignment: Alignment(-0.9, -0.9),
             child: InkWell(
@@ -113,14 +125,14 @@ class _HomePageState extends State<HomePage> {
                 child: Material(
                   elevation: 5,
                   shadowColor: Colors.black,
-                  color: Colors.blue,
+                  color: kthirdrcolor,
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
                     height: side * 0.12,
                     width: side * 0.12,
                     decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.lime,
+                          color: Colors.blue,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(10)),
@@ -128,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                         angle: -pi / 4,
                         child: Icon(
                           Icons.menu,
-                          color: Colors.lime,
+                          color: Colors.blue,
                         )),
                   ),
                 ),
@@ -148,34 +160,23 @@ class _HomePageState extends State<HomePage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-              child: Text('Welcome to aquaclean'.toUpperCase(),
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 25))),
+                child: Text('Welcome to aquaclean'.toUpperCase(),
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 25))),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
-            child: Icon(
-              Icons.camera,
-              color: appOrange,
-              size: 90,
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Your Absolute Cleaning Experience.\nWe offer you cleaming services with ultimate professionalism to guarantee your satisfaction.',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 16),
+              textAlign: TextAlign.center,
             ),
           ),
-          Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'The home of freelancers\nwe offer you short_term services with ultimate professionalism to guarantee your satisfaction\n\nSelect The Best From Our Comprehensive Talent',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16),
-                  textAlign: TextAlign.center,
-                ),
-              )),
         ],
       ),
     );

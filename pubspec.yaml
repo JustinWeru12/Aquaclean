@@ -33,6 +33,7 @@ dependencies:
   flutter_local_notifications: ^1.4.4+2
   marquee: ^1.5.2
   qr_flutter: ^3.2.0
+  flare_flutter: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/flare/
   fonts:
     - family: Poppins
       fonts:

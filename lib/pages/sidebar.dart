@@ -1,6 +1,7 @@
 import 'package:aquaclean/services/auth.dart';
 import 'package:aquaclean/services/crud.dart';
 import 'package:aquaclean/style/theme.dart';
+import 'package:aquaclean/pages/reservations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -133,17 +134,17 @@ class _SideBarState extends State<SideBar> {
                   },
                 ),
                 divider(),
-                // ListTile(
-                //   leading: Icon(Icons.favorite, color: kPrimaryColor),
-                //   title: Text('Favorites',
-                //       style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
-                //   onTap: () => {
-                //     Navigator.of(context).pop(),
-                //     Navigator.push(context,
-                //         MaterialPageRoute(builder: (context) => Favorites())),
-                //   },
-                // ),
-                // divider(),
+                ListTile(
+                  leading: Icon(Icons.favorite, color: kPrimaryColor),
+                  title: Text('Reservations',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                  onTap: () => {
+                    Navigator.of(context).pop(),
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Reservations())),
+                  },
+                ),
+                divider(),
                 // ListTile(
                 //   leading: Icon(Icons.person, color: kPrimaryColor),
                 //   title: Text('My Account',
