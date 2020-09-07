@@ -29,11 +29,9 @@ class _LoginSignUpPageState extends State<LoginSignUpPage>
   CrudMethods crudObj = new CrudMethods();
   String _email;
   String _fullNames;
-  DateTime dob;
   File picture;
-  bool admin;
+  bool admin = false;
   double offset = 0;
-  int date = DateTime.now().millisecondsSinceEpoch;
   String _authHint = '';
   String _password;
   // String _errorMessage;
@@ -73,6 +71,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage>
             favorites: [],
             picture:
                 "https://firebasestorage.googleapis.com/v0/b/covid19-ke-80e90.appspot.com/o/IMG_-oxvq7.jpg?alt=media&token=b8d2972a-e54c-49ff-8c4c-c869bd9d9592",
+            admin: admin,
           );
           crudObj.createOrUpdateUserData(userData.getDataMap());
         }

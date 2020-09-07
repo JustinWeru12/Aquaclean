@@ -93,4 +93,10 @@ class CrudMethods {
         .document('developerdetails')
         .get();
   }
+
+  Future<void> createService(Map<String, dynamic> jobDataMap) async {
+   Firestore.instance.collection('services').add(jobDataMap).catchError((e) {
+        print(e);
+      });
+  }
 }

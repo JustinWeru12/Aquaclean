@@ -1,3 +1,4 @@
+import 'package:aquaclean/pages/profile.dart';
 import 'package:aquaclean/services/auth.dart';
 import 'package:aquaclean/services/crud.dart';
 import 'package:aquaclean/style/theme.dart';
@@ -135,7 +136,7 @@ class _SideBarState extends State<SideBar> {
                 ),
                 divider(),
                 ListTile(
-                  leading: Icon(Icons.favorite, color: kPrimaryColor),
+                  leading: Icon(Icons.calendar_today, color: kPrimaryColor),
                   title: Text('Reservations',
                       style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
                   onTap: () => {
@@ -145,17 +146,17 @@ class _SideBarState extends State<SideBar> {
                   },
                 ),
                 divider(),
-                // ListTile(
-                //   leading: Icon(Icons.person, color: kPrimaryColor),
-                //   title: Text('My Account',
-                //       style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
-                //   onTap: () => {
-                //     Navigator.of(context).pop(),
-                //     Navigator.push(context,
-                //         MaterialPageRoute(builder: (context) => ProfilePage())),
-                //   },
-                // ),
-                // divider(),
+                ListTile(
+                  leading: Icon(Icons.person, color: kPrimaryColor),
+                  title: Text('My Account',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                  onTap: () => {
+                    Navigator.of(context).pop(),
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProfilePage())),
+                  },
+                ),
+                divider(),
                 // ListTile(
                 //   leading: Icon(Icons.help, color: kPrimaryColor),
                 //   title: Text('Get in Touch',

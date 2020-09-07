@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: _navigatorKey,
           initialRoute: '/',
           routes: {
-            '/root': (context) => RootPage(),
+            // '/': (context) => RootPage(),
           },
           theme: ThemeData(
               scaffoldBackgroundColor: kBackgroundColor,

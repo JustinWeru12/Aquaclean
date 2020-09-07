@@ -36,28 +36,15 @@ class _RequestState extends State<Request> {
       ),
       body: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blueGrey,
-                  offset: Offset(10.0, 10.0),
-                  blurRadius: 5.0,
-                )
-              ],
-            ),
-            child: CardDesign(
-              new Center(
-                child: new Icon(
-                  Icons.refresh,
-                  size: 50.0,
-                ),
+          CardDesign(
+            new Center(
+              child: new Icon(
+                Icons.refresh,
+                size: 50.0,
               ),
-              color: Colors.blue,
-              height: 100,
             ),
+            color: Colors.blue,
+            height: 100,
           ),
         ],
       ),

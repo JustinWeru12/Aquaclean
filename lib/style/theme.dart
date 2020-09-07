@@ -34,7 +34,11 @@ const kTitleTextstyle = TextStyle(
   color: kTitleTextColor,
   fontWeight: FontWeight.bold,
 );
-
+const kBodyTextstyle = TextStyle(
+  fontSize: 18,
+  color: kTitleTextColor,
+  fontWeight: FontWeight.normal,
+);
 const kContentTextstyle = TextStyle(
   fontSize: 18,
   color: kBackgroundColor,
