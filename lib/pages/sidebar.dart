@@ -69,10 +69,10 @@ class _SideBarState extends State<SideBar> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFa8eb12).withOpacity(0.9),
-                  Color(0xFF00bf72).withOpacity(0.9),
-                  Color(0xFF008793).withOpacity(0.9),
-                  Color(0xFF004d7a).withOpacity(0.9),
+                  Color(0xFF00c6ff).withOpacity(0.9),
+                  Color(0xFF0276fd).withOpacity(0.9),
+                  Color(0xFF0072ff).withOpacity(0.9),
+                  Color(0xFF0276fd).withOpacity(0.9),
                   Color(0xFF004d7a),
                   Color(0xFF051937),
                   Colors.transparent,
@@ -128,7 +128,8 @@ class _SideBarState extends State<SideBar> {
                 ListTile(
                   leading: Icon(Icons.home, color: kPrimaryColor),
                   title: Text('Home',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: kPrimaryColor)),
                   onTap: () => {
                     Navigator.of(context).pop(),
                     Navigator.pushReplacementNamed(context, '/'),
@@ -138,18 +139,22 @@ class _SideBarState extends State<SideBar> {
                 ListTile(
                   leading: Icon(Icons.calendar_today, color: kPrimaryColor),
                   title: Text('Reservations',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: kPrimaryColor)),
                   onTap: () => {
                     Navigator.of(context).pop(),
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Reservations())),
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Reservations())),
                   },
                 ),
                 divider(),
                 ListTile(
                   leading: Icon(Icons.person, color: kPrimaryColor),
                   title: Text('My Account',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: kPrimaryColor)),
                   onTap: () => {
                     Navigator.of(context).pop(),
                     Navigator.push(context,
@@ -171,7 +176,8 @@ class _SideBarState extends State<SideBar> {
                 ListTile(
                   leading: Icon(Icons.exit_to_app, color: kPrimaryColor),
                   title: Text('Logout',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: kPrimaryColor)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: kPrimaryColor)),
                   onTap: () async {
                     Navigator.of(context).pop();
                     widget._signOut();

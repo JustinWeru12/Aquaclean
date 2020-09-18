@@ -362,7 +362,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Positioned.fill(
             child: Container(
               child: Image.asset(
-                'assets/bg.jpg',
+                'assets/bg.webp',
                 fit: BoxFit.cover,
               ),
             ),

@@ -38,15 +38,13 @@ class CrudMethods {
 
   createOrUpdateUserData(Map<String, dynamic> userDataMap) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-//    print('USERID ' + user.uid);
     DocumentReference ref =
         Firestore.instance.collection('user').document(user.uid);
     return ref.setData(userDataMap, merge: true);
   }
 
-   createReservation(Map<String, dynamic> userDataMap) async {
+  createReservation(Map<String, dynamic> userDataMap) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-//    print('USERID ' + user.uid);
     DocumentReference ref = Firestore.instance
         .collection('user')
         .document(user.uid)
@@ -55,7 +53,7 @@ class CrudMethods {
     return ref.setData(userDataMap, merge: true);
   }
 
-  createProfReservation(Map<String, dynamic> userDataMap,String docId) async {
+  createProfReservation(Map<String, dynamic> userDataMap, String docId) async {
     DocumentReference ref = Firestore.instance
         .collection('professions')
         .document(docId)
@@ -70,6 +68,7 @@ class CrudMethods {
         .document(clubID)
         .get();
   }
+
   deleteResData(docId) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     Firestore.instance
@@ -95,8 +94,8 @@ class CrudMethods {
   }
 
   Future<void> createService(Map<String, dynamic> jobDataMap) async {
-   Firestore.instance.collection('services').add(jobDataMap).catchError((e) {
-        print(e);
-      });
+    Firestore.instance.collection('services').add(jobDataMap).catchError((e) {
+      print(e);
+    });
   }
 }

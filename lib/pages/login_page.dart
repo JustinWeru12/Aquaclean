@@ -176,7 +176,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage>
             ),
           ),
           Image.asset(
-            'assets/bg.jpg',
+            'assets/bg.webp',
             height: MediaQuery.of(context).size.height * 0.55,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,

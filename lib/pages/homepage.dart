@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: <Widget>[
           Image.asset(
-            'assets/bg.jpg',
+            'assets/bg.webp',
             height: MediaQuery.of(context).size.height * 0.5,
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
@@ -324,205 +324,207 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         builder: (context) {
           return StatefulBuilder(builder: (context, setState) {
-            return Container(
-              // height: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.white.withOpacity(0.7),
-                      Colors.white.withOpacity(0.8),
-                      Colors.white
-                    ]),
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(25.0),
-                  topRight: const Radius.circular(25.0),
+            return SingleChildScrollView(
+              child: Container(
+                // height: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(left: 30,right:30,bottom: MediaQuery.of(context).viewInsets.bottom),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.white.withOpacity(0.7),
+                        Colors.white.withOpacity(0.8),
+                        Colors.white
+                      ]),
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(25.0),
+                    topRight: const Radius.circular(25.0),
+                  ),
                 ),
-              ),
-              child: SingleChildScrollView(
-                child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          'Add a Service',
-                          style: kTitleTextstyle,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Enter the Name of the Service';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) => name = value,
-                            decoration: InputDecoration(
-                              filled: false,
-                              contentPadding: EdgeInsets.all(10),
-                              enabledBorder: _borders,
-                              focusedBorder: _borders,
-                              hintText: 'Name of Service',
-                              hintStyle: TextStyle(
-                                color: mainColor,
-                                fontWeight: FontWeight.w500,
+                child: SingleChildScrollView(
+                  child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Add a Service',
+                            style: kTitleTextstyle,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              style: TextStyle(
+                                color: Colors.black,
                               ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () async {
-                              var tempImage = await picker.getImage(
-                                  source: ImageSource.gallery);
-                              setState(() {
-                                newProfilPic = File(tempImage.path);
-                              });
-                            },
-                            child: newProfilPic == null
-                                ? RaisedButton(
-                                    elevation: 5.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.camera_alt,
-                                          color: Color(0xFF008793),
-                                        ),
-                                        Text('Select picture'),
-                                      ],
-                                    ),
-                                    color: Color(0xFFebdffc),
-                                    textColor: Colors.black87,
-                                    onPressed: () async {
-                                      var tempImage = await picker.getImage(
-                                          source: ImageSource.gallery);
-                                      setState(() {
-                                        newProfilPic = File(tempImage.path);
-                                      });
-                                    })
-                                : enableUpload(),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            maxLines: 5,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Enter the Description';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) => description = value,
-                            decoration: InputDecoration(
-                              filled: false,
-                              contentPadding: EdgeInsets.all(10),
-                              enabledBorder: _borders,
-                              focusedBorder: _borders,
-                              hintText: 'Description',
-                              hintStyle: TextStyle(
-                                color: mainColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.text,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Enter the Location';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) => location = value,
-                            decoration: InputDecoration(
-                              filled: false,
-                              contentPadding: EdgeInsets.all(10),
-                              enabledBorder: _borders,
-                              focusedBorder: _borders,
-                              hintText: 'Location',
-                              hintStyle: TextStyle(
-                                color: mainColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                            validator: (String value) {
-                              if (value.isEmpty) {
-                                return 'Enter the Price';
-                              }
-                              return null;
-                            },
-                            onSaved: (value) => price = int.tryParse(value),
-                            decoration: InputDecoration(
-                              filled: false,
-                              contentPadding: EdgeInsets.all(10),
-                              enabledBorder: _borders,
-                              focusedBorder: _borders,
-                              hintText: 'Price',
-                              hintStyle: TextStyle(
-                                color: mainColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        _isLoading == false
-                            ? RaisedButton(
-                                color: mainColor,
-                                child: Text(
-                                  'Add',
-                                  style: kContentTextstyle,
+                              validator: (String value) {
+                                if (value.isEmpty) {
+                                  return 'Enter the Name of the Service';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => name = value,
+                              decoration: InputDecoration(
+                                filled: false,
+                                contentPadding: EdgeInsets.all(10),
+                                enabledBorder: _borders,
+                                focusedBorder: _borders,
+                                hintText: 'Name of Service',
+                                hintStyle: TextStyle(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                                splashColor: kthirdrcolor,
-                                onPressed: () {
-                                  if (newProfilPic == null) {
-                                    _showDialogMissingPhoto();
-                                  } else {
-                                    if (_formKey.currentState.validate()) {
-                                      _formKey.currentState.save();
-                                      uploadImage().then((value) {
-                                        addService(value);
-                                        Navigator.of(context).pop();
-                                      });
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: () async {
+                                var tempImage = await picker.getImage(
+                                    source: ImageSource.gallery);
+                                setState(() {
+                                  newProfilPic = File(tempImage.path);
+                                });
+                              },
+                              child: newProfilPic == null
+                                  ? RaisedButton(
+                                      elevation: 5.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30.0),
+                                      ),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.camera_alt,
+                                            color: Color(0xFF008793),
+                                          ),
+                                          Text('Select picture'),
+                                        ],
+                                      ),
+                                      color: Color(0xFFebdffc),
+                                      textColor: Colors.black87,
+                                      onPressed: () async {
+                                        var tempImage = await picker.getImage(
+                                            source: ImageSource.gallery);
+                                        setState(() {
+                                          newProfilPic = File(tempImage.path);
+                                        });
+                                      })
+                                  : enableUpload(),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              maxLines: 5,
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              validator: (String value) {
+                                if (value.isEmpty) {
+                                  return 'Enter the Description';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => description = value,
+                              decoration: InputDecoration(
+                                filled: false,
+                                contentPadding: EdgeInsets.all(10),
+                                enabledBorder: _borders,
+                                focusedBorder: _borders,
+                                hintText: 'Description',
+                                hintStyle: TextStyle(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.text,
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              validator: (String value) {
+                                if (value.isEmpty) {
+                                  return 'Enter the Location';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => location = value,
+                              decoration: InputDecoration(
+                                filled: false,
+                                contentPadding: EdgeInsets.all(10),
+                                enabledBorder: _borders,
+                                focusedBorder: _borders,
+                                hintText: 'Location',
+                                hintStyle: TextStyle(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              validator: (String value) {
+                                if (value.isEmpty) {
+                                  return 'Enter the Price';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) => price = int.tryParse(value),
+                              decoration: InputDecoration(
+                                filled: false,
+                                contentPadding: EdgeInsets.all(10),
+                                enabledBorder: _borders,
+                                focusedBorder: _borders,
+                                hintText: 'Price',
+                                hintStyle: TextStyle(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          _isLoading == false
+                              ? RaisedButton(
+                                  color: mainColor,
+                                  child: Text(
+                                    'Add',
+                                    style: kContentTextstyle,
+                                  ),
+                                  splashColor: kthirdrcolor,
+                                  onPressed: () {
+                                    if (newProfilPic == null) {
+                                      _showDialogMissingPhoto();
+                                    } else {
+                                      if (_formKey.currentState.validate()) {
+                                        _formKey.currentState.save();
+                                        uploadImage().then((value) {
+                                          addService(value);
+                                          Navigator.of(context).pop();
+                                        });
+                                      }
                                     }
-                                  }
-                                },
-                              )
-                            : Container(
-                                margin: EdgeInsets.only(top: 18.0),
-                                child: CircularProgressIndicator()),
-                      ],
-                    )),
+                                  },
+                                )
+                              : Container(
+                                  margin: EdgeInsets.only(top: 18.0),
+                                  child: CircularProgressIndicator()),
+                        ],
+                      )),
+                ),
               ),
             );
           });
